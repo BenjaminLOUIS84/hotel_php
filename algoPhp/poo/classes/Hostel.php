@@ -21,6 +21,7 @@ class Hostel{
 
         $this->room = [];
     }
+    
 ////////////////////////////////////////////Getter///////////////////////////////////////////
     public function getName():string
     {
@@ -69,10 +70,16 @@ class Hostel{
         .$this->getAdress(). " " .$this->getCp(). " " .$this->getCity();
     }
 
-    public function statut(){////////////////////////////////////////////////Méthode pour inscrire le statut des chambres de l'hôtel
-        return "Statuts des chambres de ".$this->getName();
-    }
+    public function displayRooms(){////////////////////////////////////////////////Méthode pour afficher toutes les chambres de l'hôtel
+     
+        $room = "Statuts des chambres de " .$this->getName(). " :<br>";
     
+        foreach ($this->room as $count){
+          $room = $room. $count->getAllRooms();               
+        }
+        return $room;  
+    }
+
     public function totalRoom(){/////////////////////////////////////////////Méthode pour comptabiliser le nombre de chambres
         return "Nombre de chambres: ".Room::$count."<br>";
     }

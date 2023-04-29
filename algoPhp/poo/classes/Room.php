@@ -2,7 +2,8 @@
 
 class Room{
 
-////////////////////////////////////////////Attributes///////////////////////////////////////////
+
+    ////////////////////////////////////////////Attributes///////////////////////////////////////////
 
     private int $number;
     private int $price;
@@ -10,17 +11,22 @@ class Room{
     private bool $etat;
 ////////////////////////////
     private array $reservations;
+    private Hostel $hostel;//Pour lier le l'Hôtel aux chambres
 
 //////////////////////////// Pour compter le nombrre de chambres déclarer une variable initiale à 0   
     public static $count = 0;
 
 ////////////////////////////////////////////Constructor///////////////////////////////////////////
 
-    public function __construct(int $number, int $price, bool $wifi, bool $etat){
+    public function __construct(int $number, int $price, bool $wifi, bool $etat, Hostel $hostel){
         $this->number = $number;
         $this->price = $price;
         $this->wifi = $wifi;
         $this->etat = $etat;
+        $this->hostel = $hostel; //L'Hôtel est initialisé
+
+        $hostel->addRoom($this); //Fournir toute l'instance en cours des chambres
+
 /////////////////////////////
         $this->reservations = [];
 
@@ -86,7 +92,7 @@ class Room{
             return "Réservée";
         }  
     }
-    public function getInfos(){//////////////////////Méthode pour afficher dans un tableau les caractéristiques de chaque chambres
+    public function getAllRooms(){//////////////////////Méthode pour afficher dans un tableau les caractéristiques de chaque chambres
 
         echo "<table border=1><th>CHAMBRE</th><th>PRIX</th><th>WIFI</th><th>ETAT</th>";
 
@@ -100,7 +106,7 @@ class Room{
         return $this->getNumber(); 
     }
 
-
 }
+
 
 ?>

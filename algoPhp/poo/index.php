@@ -25,14 +25,14 @@ réaliser l’application en POO permettant la gestion de réservations de chamb
 
     $hostel1 = new Hostel("Hilton****Strasbourg","10 route de la Gare","67000","STRASBOURG");
     ///////////////////////////////////////ROOMS
-    $room1 = new Room(1, 120, false, true);
-    $room2 = new Room(2, 120, false, true);
-    $room3 = new Room(3, 120, false, false);
-    $room4 = new Room(4, 120, false, false);
-    $room16 = new Room(16, 300, true, true);
-    $room17 = new Room(17, 300, true, false);
-    $room18 = new Room(18, 300, true, true);
-    $room19 = new Room(19, 300, true, true);
+    $room1 = new Room(1, 120, false, true, $hostel1);
+    $room2 = new Room(2, 120, false, true, $hostel1);
+    $room3 = new Room(3, 120, false, false, $hostel1);
+    $room4 = new Room(4, 120, false, false, $hostel1);
+    $room16 = new Room(16, 300, true, true, $hostel1);
+    $room17 = new Room(17, 300, true, false, $hostel1);
+    $room18 = new Room(18, 300, true, true, $hostel1);
+    $room19 = new Room(19, 300, true, true, $hostel1);
 
     ///////////////////////////////////////CUSTOMERS
     $customer1 = new Customer("GIBELLO","Virgile", 300);
@@ -68,25 +68,9 @@ réaliser l’application en POO permettant la gestion de réservations de chamb
     
     ///////////////////////////////////////
     echo "<br>";
-    echo $hostel1->statut();
+    echo $hostel1->displayRooms();
     echo "<br>";
-    echo $room1->getInfos();
-    echo "<br>";
-    echo $room2->getInfos();
-    echo "<br>";
-    echo $room3->getInfos();
-    echo "<br>";
-    echo $room4->getInfos();
-    echo "<br>";
-    echo $room16->getInfos();
-    echo "<br>";
-    echo $room17->getInfos();
-    echo "<br>";
-    echo $room18->getInfos();
-    echo "<br>";
-    echo $room19->getInfos();
-    echo "<br>";
-
+   
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ?>
 
