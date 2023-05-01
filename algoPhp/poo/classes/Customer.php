@@ -6,16 +6,16 @@ class Customer{
 
     private string $name;
     private string $firstName;
-    private int $bill;
+    
 ////////////////////////////
     private array $reservations;
 
 ////////////////////////////////////////////Constructor///////////////////////////////////////////
 
-    public function __construct(string $name, string $firstName, int $bill){
+    public function __construct(string $name, string $firstName){
         $this->name = $name;
         $this->firstName = $firstName;
-        $this->bill = $bill;
+        
 ////////////////////////////    
         $this->reservations = [];
     }
@@ -27,10 +27,6 @@ class Customer{
     public function getFirstName():string
     {
         return $this->firstName;
-    }
-    public function getBill():int
-    {
-        return $this->bill;
     }
     
 ////////////////////////////////////////////Setter///////////////////////////////////////////
@@ -44,19 +40,10 @@ class Customer{
         $this->firstName = $firstName;
         return $this;
     }
-    public function setBill($bill)
-    {
-        $this->bill = $bill;
-        return $this;
-    }
     
 ////////////////////////////////////////////Methods///////////////////////////////////////////
     public function addReservation(Reservation $reservations) {
         $this->reservations[] = $reservations;
-    }
-
-    public function payBill(){
-        return "Le montant du séjour de ". $this->getFirstName(). " " .$this->getName(). " s'élève à : " .$this->getBill(). "€";
     }
 
     public function __toString(){

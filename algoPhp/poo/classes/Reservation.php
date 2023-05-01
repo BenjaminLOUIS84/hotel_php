@@ -30,7 +30,7 @@ class Reservation{
         return true;
     }
 
-////////////////////////////////////////////Getters///////////////////////////////////////////
+////////////////////////////////////////////Getters//////////////////////////////////////////////
     public function getCustomer():Customer
     {
         return $this->customer;
@@ -48,7 +48,7 @@ class Reservation{
         return $this->dateEnd;
     }
     
-////////////////////////////////////////////Setters///////////////////////////////////////////
+////////////////////////////////////////////Setters/////////////////////////////////////////////
     public function setCustomer($customer)
     {
         $this->customer = $customer;
@@ -70,7 +70,7 @@ class Reservation{
         return $this;
     }
     
-////////////////////////////////////////////Methods///////////////////////////////////////////
+////////////////////////////////////////////Methods/////////////////////////////////////////////
     public function addRoom(Room $room) {
         $this->room[] = $room;
     }
@@ -78,10 +78,30 @@ class Reservation{
         $this->customer[] = $customer;
     }
 
+//////////////////////////////CALCULER LE NB DE JOURS ENTRE 2 DATES/////////////////////////////
+
+    public function findNbDays(){
+        $dateStart = $this->dateStart;
+        $dateEnd = $this->dateEnd;
+    
+        $difference = date_diff($dateEnd, $dateStart);
+        return $difference->d;
+    }
+   
+//////////////////////////////CALCULER LE MONTANT TOTAL DU SEJOUR/////////////////////////////
+
+    public function bill(){
+        return $this->findNbDays() * $this->Room->getPrice();
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function __toString(){
         return $this->Customer. " à réservé la chambre " . $this->Room.
-        " du ".$this->getDateStart()->format("d/m/Y"). " au " .$this->getDateEnd()->format("d/m/Y"). "<br>";
-    
+        " du ".$this->getDateStart()->format("d/m/Y").
+        " au " .$this->getDateEnd()->format("d/m/Y"). "<br>
+         soit " .$this->findNbDays(). " jours<br>
+         <h3>Montant total du séjour: " .$this->bill(). "€</h3>";
     }
     
 }

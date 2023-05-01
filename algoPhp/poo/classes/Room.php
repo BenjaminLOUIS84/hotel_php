@@ -94,30 +94,12 @@ class Room{
     }
     public function getAllRooms(){//////////////////////Méthode pour afficher dans un tableau les caractéristiques de chaque chambres
 
-
-/////////////////////////////////////////////PB POUR AFFICHER LE TABLEAU//////////////////////////////////////////////////
-
-//TABLEAU 1 Le TH et le TD so,t sur la même ligne
-
-
-
         echo "<table border = 1>";
 
             return "<tr><th>CHAMBRE</th><td>" .$this->getNumber(). "</td><th>PRIX</th><td>" .$this->getPrice(). 
             " €</td><th>WIFI</th><td>" .$this->afficherWifi(). "</td><th>ETAT</th><td>" .$this->afficherEtat()."</td></tr>";
 
         echo "</table>";
-
-//TABLEAU 2 Le TH se répète
-
-    //     echo "<table border = 1><th>CHAMBRE</th><th>PRIX</th><th>WIFI</th><th>ETAT</th>";
-
-    //     return "<tr><td>" .$this->getNumber(). "</td><td>" .$this->getPrice(). 
-    //     " €</td><td>" .$this->afficherWifi(). "</td><td>" .$this->afficherEtat()."</td></tr>";
-
-    //     echo "</table>";
-
-
 
      }
     
